@@ -1,0 +1,14 @@
+########
+Send-MailMessage -To "PTest@foo.com" `
+	-Subject "PS test 16-01" `
+	-Body "PS test 16-01" `
+	-SmtpServer "Relay-sandiego.us.asml.com" `
+	-From "ps_test_16@bar.com" `
+	-Attachments "I:\FDS2\20170424_Outgoing_Test_Emails\01_3-9-2017-5-22-28-AM-61244.lda"
+
+Send-MailMessage -To "PTest@foo.com" `
+	-Subject "PS test 16-02" `
+	-Body "PS test 16-02" `
+	-SmtpServer "Relay-sandiego.us.asml.com" `
+	-From "ps_test_16@bar.com" `
+	-Attachments "I:\FDS2\20170424_Outgoing_Test_Emails\02_62322-20170309-144700026-SGT-GA-ET.dat"

@@ -1,0 +1,13 @@
+$maxItems = 2000
+$sourceFolder = "\\csddata2b\Work91-1\LaserFiles\Reroute\BQ_FSD_Indir\Hold"
+
+$destinationFolder = "\\csddata2b\Work91-1\LaserFiles\Reroute\BQ_FSD_Indir\In_COL"
+Get-Childitem $sourceFolder -Attributes !Directory | sort LastWriteTime | Select-Object -First $maxItems | Move-Item -Destination $destinationFolder
+
+$destinationFolder = "\\csddata2b\Work91-1\LaserFiles\Reroute\BQ_FSD_Indir\In_Expedite"
+Get-Childitem $sourceFolder -Attributes !Directory | sort LastWriteTime | Select-Object -First $maxItems | Move-Item -Destination $destinationFolder
+
+$sourceFolder = "\\csddata2b\Work91-1\LaserFiles\Reroute\BQ_FSD_Indir\In_FastForward\Hold"
+$destinationFolder = "\\csddata2b\Work91-1\LaserFiles\Reroute\BQ_FSD_Indir\In_FastForward"
+Get-Childitem $sourceFolder -Attributes !Directory | sort LastWriteTime | Select-Object -First $maxItems | Move-Item -Destination $destinationFolder
+

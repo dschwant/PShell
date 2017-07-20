@@ -1,0 +1,18 @@
+## Load Managed API dll 
+Add-Type -Path "C:\Users\userx\Downloads\ExEx\Microsoft.Exchange.WebServices.dll"
+
+$service = New-Object Microsoft.Exchange.WebServices.Data.ExchangeService([Microsoft.Exchange.WebServices.Data.ExchangeVersion]::Exchange2010_SP1)  
+  
+$service.Credentials = New-Object Microsoft.Exchange.WebServices.Data.WebCredentials("bar.noo@foo.com","xxxx")  
+
+$service.Url = [system.URI]  "https://outlook.office365.com/ews/exchange.asmx"
+
+$inboxFolderName = [Microsoft.Exchange.WebServices.Data.WellKnownFolderName]::Inbox
+$inboxFolder = [Microsoft.Exchange.WebServices.Data.Folder]::Bind($service,$inboxFolderName)
+
+$mailitems = $inboxFolder.FindItems(10)
+
+$mailitems | ForEach {$_.Load()}
+
+$mailitems | Select Sender,Subject,Body 
+
