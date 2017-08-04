@@ -1,0 +1,19 @@
+$dt = get-date -UFormat "%Y%m%d%H%M"
+$files = ls "I:\files\" | sort name
+
+For ($i=100; $i -le 150; $i++) {
+"$i - $dt - "
+	foreach ($file in $files){
+		$ft = $file.name.ToString().Substring(0,3)
+		write-host -f magenta $file.fullname
+		
+		Send-MailMessage -To "Test@me.com" `
+			-Subject "PS test $i - $dt - $ft" `
+			-Body "PS test $i - $dt - $ft" `
+			-SmtpServer "something.com" `
+			-From "ps_test_$i@me.com" `
+			-Attachments $file.fullname
+		
+		start-sleep 10
+	}
+}
