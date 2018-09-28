@@ -1,0 +1,11 @@
+$maxItems = 100
+$sourceFolder = "D:\FDS_Files\Test\Hold2"
+$destinationFolder = "D:\FDS_Files\Test"
+
+For ($i=0; $i -le 2000; $i++) {
+	get-date -UFormat "%Y%m%d%H%M"
+	Get-Childitem $sourceFolder -Attributes !Directory | sort LastWriteTime | Select-Object -First $maxItems | Move-Item -Destination $destinationFolder
+	start-sleep -s 300
+}
+
+
